@@ -117,9 +117,9 @@ router.post("/editprofile", function (req, res, next) {
 router.post("/book", function (req, res, next) {
 	CustomerInfo.findOne({ email: req.body.email }, function (err, data) {
 		if(data) {
-			customer = data;
+			customerData = data;
 			const book1 = new Book.bookInfo({
-				custEmail: req.body.email,
+				customer: customerData.id,
 				bookDate: req.body.date,
 				bookTime: req.body.time,
 				court: req.body.court,

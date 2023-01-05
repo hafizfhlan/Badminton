@@ -123,7 +123,7 @@
                                             <th>No</th>
                                             <th>User ID</th>
                                             <th>Date</th>
-                                            <th>Court</th>
+                                            <th>Court ID</th>
                                             <th>Time</th>
                                             <th>Edit Booking</th>
                                             <th>Delete Booking</th>
@@ -135,17 +135,24 @@
                                         <% for(var i = 0; i < data.length; i++) { %>
                                             <tr>
                                               <td><%= i + 1 %></td>
-                                              <td><%= data[i].userid %></td>
-                                              <td><%= data[i].bookdate %></td>
-                                              <td><%= data[i].court %></td>
-                                              <td><%= data[i].booktime %></td>
+                                              <td><%= data[i].id %></td>
+                                              <%
+                                              var d = data[i].bookDate
+                                    
+                                              var dM = (d.getMonth()+1)
+                                              d = d.getDate().toString() + '-' + dM.toString().padStart(2, '0') + '-'  + d.getFullYear();
+
+                                              %>
+                                              <td><%= d %></td> 
+                                              <td><%= data[i].customer %></td>
+                                              <td><%= data[i].bookTime %></td>
                           
                                              
                                               <td>
-                                                <a class="btn btn-info btn-circle" href="/admineditbooking/<%= data[i]._id%>" ><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-info btn-circle" href="/admin/admineditbooking/<%= data[i]._id%>" ><i class="fa fa-edit"></i></a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-circle" href="/admindeletebooking/<%= data[i]._id%>" onclick="return confirm('Sure wants to delete the booking?')" ><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-danger btn-circle" href="/admin/admindeletebooking/<%= data[i]._id%>" onclick="return confirm('Sure wants to delete the booking?')" ><i class="fa fa-trash"></i></a>
                                            </td>
 
                                           </tr>
